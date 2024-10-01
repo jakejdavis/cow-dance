@@ -9,21 +9,23 @@ import SwiftUIIntrospect
 
 struct ContentView: View {
     @StateObject private var viewModel = SpotifyViewModel()
+    @StateObject private var viewModelCompleted = SpotifyViewModel()
     @State private var selectedAlbum: Album?
     @State private var currentTab = 0
     @State private var isAddSheetPresented = false
     @State private var spotifyLink = ""
     @State private var lastHostingView: UIView!
     @State private var settingsDetent = PresentationDetent.large
+    @Namespace private var namespace
 
     var body: some View {
         ZStack {
             NavigationStack {
                 ZStack {
                     TabView(selection: $currentTab) {
-                        CoverFlowView(viewModel: viewModel, selectedAlbum: $selectedAlbum)
+                        CoverFlowView(viewModel: viewModel, namespace: namespace, selectedAlbum: $selectedAlbum)
                             .tag(0)
-                        CoverFlowView(viewModel: viewModel, selectedAlbum: $selectedAlbum)
+                        CoverFlowView(viewModel: viewModelCompleted, namespace: namespace, selectedAlbum: $selectedAlbum)
                             .tag(1)
                     }
                     .ignoresSafeArea()
@@ -66,9 +68,23 @@ struct ContentView: View {
                 }
             }
             .preferredColorScheme(.dark)
+            
+            if let album = selectedAlbum {
+                DetailView(namespace: namespace,
+                           albumId: album.id,
+                           show: Binding(
+                            get: { selectedAlbum != nil },
+                            set: { if !$0 { selectedAlbum = nil } }
+                           ),
+                           albumTitle: album.name,
+                           artist: album.artists.first?.name ?? "",
+                           albumArtURL: album.images.first?.url ?? "")
+                    .zIndex(1)
+            }
         }
         .onAppear {
             viewModel.fetchAlbums()
+            viewModelCompleted.fetchAlbums(completed: true)
         }
     }
 }

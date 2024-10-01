@@ -16,8 +16,7 @@ struct DetailView: View {
             
             ScrollView {
                 VStack {
-                    show ? AlbumItemView(namespace: namespace,
-                                  albumId: albumId, show: $show, albumTitle: albumTitle, artist: artist, albumArtURL: albumArtURL, rotation: Double(0))
+                    show ? AlbumItemView(namespace: namespace, albumId: albumId, show: $show, albumTitle: albumTitle, artist: artist, albumArtURL: albumArtURL, rotation: Double(0))
                         .aspectRatio(1, contentMode: .fit)
                         .onTapGesture {
                             withAnimation(.easeOut(duration: 0.2)) {

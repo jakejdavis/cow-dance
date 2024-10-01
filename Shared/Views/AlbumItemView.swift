@@ -9,6 +9,7 @@ import SwiftUI
 import PixieCacheKit
 
 struct AlbumItemView: View {
+    
     var namespace: Namespace.ID
     var albumId: String
     @Binding var show: Bool
