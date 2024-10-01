@@ -25,6 +25,10 @@ struct Album: Identifiable, Decodable {
 class SpotifyViewModel: ObservableObject {
     @Published var albums: [Album] = []
     
+    func removeAlbum(_ album: Album) {
+        albums.removeAll { $0.id == album.id }
+    }
+    
     func fetchAlbums() {
         // Simulated API call
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
