@@ -4,6 +4,7 @@ struct CoverFlowView: View {
     @ObservedObject var viewModel: SpotifyViewModel
     var namespace: Namespace.ID
     @Binding var selectedAlbum: Album?
+    var isListenedView: Bool = false
     
     var body: some View {
         ZStack {
@@ -13,11 +14,24 @@ struct CoverFlowView: View {
                         Spacer()
                             .frame(height: 40)
                         
-                        ForEach(viewModel.albums) { album in
+                        ForEach(viewModel.albums.filter { album in
+                            isListenedView ? album.listened : !album.listened
+                        }) { album in
+                            
                             AlbumItemRotationView(album: album,
-                                          namespace: namespace,
-                                          selectedAlbum: $selectedAlbum,
-                                          geometryHeight: geometry.size.height)
+                                                  namespace: namespace,
+                                                  selectedAlbum: $selectedAlbum,
+                                                  geometryHeight: geometry.size.height,
+                                                  toggleListened: {
+                                                    if album.listened {
+                                                        viewModel.markAlbumAsToListen(album)
+                                                    } else {
+                                                        viewModel.markAlbumAsListened(album)
+                                                    }
+                            },
+                                                  remove: {
+                                viewModel.removeAlbum(album)
+                            })
                             .frame(width: 300, height: 300)
                         }
                         
@@ -27,7 +41,6 @@ struct CoverFlowView: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-        
         }
     }
 }
@@ -37,6 +50,9 @@ struct AlbumItemRotationView: View {
     var namespace: Namespace.ID
     @Binding var selectedAlbum: Album?
     let geometryHeight: CGFloat
+    
+    var toggleListened: () -> Void
+    var remove: () -> Void
 
     var body: some View {
         GeometryReader { geo in
@@ -48,7 +64,7 @@ struct AlbumItemRotationView: View {
                           ),
                           albumTitle: album.name,
                           artist: album.artists.first?.name ?? "",
-                          albumArtURL: album.images.first?.url ?? "",
+                          albumArtURL: album.image,
                           rotation: Double(geo.frame(in: .global).minY - geometryHeight / 2 + 150) / 24
             )
             .onTapGesture {
@@ -58,19 +74,21 @@ struct AlbumItemRotationView: View {
             }
             .contextMenu {
                    Button {
-                       print("Mark Listened")
+                       toggleListened()
                    } label: {
-                       Label("Mark Listened", systemImage: "checkmark.circle.fill")
+                       if album.listened {
+                           Label("Mark as To Listen", systemImage: "arrow.uturn.backward.circle")
+                       } else {
+                           Label("Mark Listened", systemImage: "checkmark.circle.fill")
+                       }
                    }
 
                    Button {
-                       print("Remove")
+                       remove()
                    } label: {
                        Label("Remove", systemImage: "trash")
                    }
                }
-            
         }
     }
 }
-

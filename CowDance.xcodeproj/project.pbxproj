@@ -12,6 +12,8 @@
 		040C92992CAC82340089D5A4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 040C92982CAC82340089D5A4 /* SwiftUIIntrospect */; };
 		040C929B2CAC8CB60089D5A4 /* PixieCacheKit in Frameworks */ = {isa = PBXBuildFile; productRef = 040C929A2CAC8CB60089D5A4 /* PixieCacheKit */; };
 		040C929D2CAC8CB60089D5A4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 040C929C2CAC8CB60089D5A4 /* SwiftUIIntrospect */; };
+		040C92A02CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */; };
+		040C92A12CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */; };
 		FACC06022871A3150088C2B4 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC06012871A3150088C2B4 /* Tests_iOS.swift */; };
 		FACC06042871A3150088C2B4 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC06032871A3150088C2B4 /* Tests_iOSLaunchTests.swift */; };
 		FACC060E2871A3150088C2B4 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC060D2871A3150088C2B4 /* Tests_macOS.swift */; };
@@ -62,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		0405679B2CAB5374006FAC35 /* share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		040C929F2CACCAA90089D5A4 /* AlbumModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlbumModel.xcdatamodel; sourceTree = "<group>"; };
 		FACC05E92871A3100088C2B4 /* CowDanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowDanceApp.swift; sourceTree = "<group>"; };
 		FACC05EB2871A3150088C2B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FACC05F02871A3150088C2B4 /* CowDance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CowDance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +163,7 @@
 				040C928E2CAC1D820089D5A4 /* Views */,
 				040C928D2CAC1D5E0089D5A4 /* Models */,
 				FACC05E92871A3100088C2B4 /* CowDanceApp.swift */,
+				040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */,
 				FACC05EB2871A3150088C2B4 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -415,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040C92A12CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */,
 				FACC06112871A3150088C2B4 /* CowDanceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040C92A02CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */,
 				FACC06122871A3150088C2B4 /* CowDanceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -941,6 +947,19 @@
 			productName = SwiftUIIntrospect;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				040C929F2CACCAA90089D5A4 /* AlbumModel.xcdatamodel */,
+			);
+			currentVersion = 040C929F2CACCAA90089D5A4 /* AlbumModel.xcdatamodel */;
+			path = AlbumModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FACC05E42871A3100088C2B4 /* Project object */;
 }

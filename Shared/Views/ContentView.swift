@@ -9,7 +9,6 @@ import SwiftUIIntrospect
 
 struct ContentView: View {
     @StateObject private var viewModel = SpotifyViewModel()
-    @StateObject private var viewModelCompleted = SpotifyViewModel()
     @State private var selectedAlbum: Album?
     @State private var currentTab = 0
     @State private var isAddSheetPresented = false
@@ -25,7 +24,7 @@ struct ContentView: View {
                     TabView(selection: $currentTab) {
                         CoverFlowView(viewModel: viewModel, namespace: namespace, selectedAlbum: $selectedAlbum)
                             .tag(0)
-                        CoverFlowView(viewModel: viewModelCompleted, namespace: namespace, selectedAlbum: $selectedAlbum)
+                        CoverFlowView(viewModel: viewModel, namespace: namespace, selectedAlbum: $selectedAlbum, isListenedView: true)
                             .tag(1)
                     }
                     .ignoresSafeArea()
@@ -35,6 +34,7 @@ struct ContentView: View {
                 .navigationTitle(currentTab == 0 ? "To Listen" : "Listened")
                 .sheet(isPresented: $isAddSheetPresented) {
                     AddAlbumView(spotifyLink: $spotifyLink, onAdd: {
+                        viewModel.addAlbumFromURL(spotifyLink)
                         spotifyLink = ""
                         isAddSheetPresented = false
                     })
@@ -78,13 +78,9 @@ struct ContentView: View {
                            ),
                            albumTitle: album.name,
                            artist: album.artists.first?.name ?? "",
-                           albumArtURL: album.images.first?.url ?? "")
+                           albumArtURL: album.image)
                     .zIndex(1)
             }
-        }
-        .onAppear {
-            viewModel.fetchAlbums()
-            viewModelCompleted.fetchAlbums(completed: true)
         }
     }
 }
@@ -101,7 +97,6 @@ struct AddAlbumView: View {
     
     var onAdd: () -> Void
 
-    
     var body: some View {
         NavigationView {
             VStack {
