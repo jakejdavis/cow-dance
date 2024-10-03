@@ -9,15 +9,14 @@
 			<key>NSExtensionActivationRule</key>
 			<string>TRUEPREDICATE</string>
 		</dict>
-		<key>NSExtensionPrincipalClass</key>
-		<string>ShareExtension.ShareViewController</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.share-services</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>ShareExtension.ShareViewController</string>
 	</dict>
-
-		<key>SPOTIFY_CLIENT_ID</key>
-		<string>$(SPOTIFY_CLIENT_ID)</string>
-		<key>SPOTIFY_CLIENT_SECRET</key>
-		<string>$(SPOTIFY_CLIENT_SECRET)</string>
+	<key>SPOTIFY_CLIENT_ID</key>
+	<string>$(SPOTIFY_CLIENT_ID)</string>
+	<key>SPOTIFY_CLIENT_SECRET</key>
+	<string>$(SPOTIFY_CLIENT_SECRET)</string>
 </dict>
 </plist>

@@ -8,5 +8,7 @@
 	<string>$(SPOTIFY_CLIENT_ID)</string>
 	<key>SPOTIFY_CLIENT_SECRET</key>
 	<string>$(SPOTIFY_CLIENT_SECRET)</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>

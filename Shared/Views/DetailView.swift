@@ -4,6 +4,7 @@ struct DetailView: View {
     var namespace: Namespace.ID
     @Binding var show: Bool
     var album: Album
+    @Binding var isAnimating: Bool
     
     @State private var opacity: Double = 0
     
@@ -16,11 +17,12 @@ struct DetailView: View {
                     show ? AlbumItemView(namespace: namespace, selected: $show, rotation: Double(0), album: album)
                         .aspectRatio(1, contentMode: .fit)
                         .onTapGesture {
-                            withAnimation(.easeOut(duration: 0.1)) {
-                                opacity = 0
-                            } completion: {
+                            if !isAnimating {
+                                isAnimating = true
                                 withAnimation(.spring(response: 0.45, dampingFraction: 0.8)) {
                                     show.toggle()
+                                } completion: {
+                                    isAnimating = false
                                 }
                             }
                         } : nil
@@ -49,7 +51,7 @@ struct DetailView: View {
                         
                         //
                         //                        CheckboxFieldView(text: album.listened ? "Listened" : "Not listened yet", checked: album.listened, action: {
-                        //                                
+                        //
                         //                        })
                         
                         VStack(alignment: .leading) {
@@ -82,6 +84,6 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     @Namespace static var namespace
     static var previews: some View {
-        DetailView(namespace: namespace, show: .constant(true), album: Album(id: "1", name: "Loveless", artists: [Album.Artist(name: "My Bloody Valentine")], spotifyId: "", listened: false, image: "https://i.scdn.co/image/ab67616d0000b2730ede770070357575bc050511"))
+        DetailView(namespace: namespace, show: .constant(true), album: Album(id: "1", name: "Loveless", artists: [Album.Artist(name: "My Bloody Valentine")], spotifyId: "", listened: false, image: "https://i.scdn.co/image/ab67616d0000b2730ede770070357575bc050511"), isAnimating: .constant(false))
     }
 }

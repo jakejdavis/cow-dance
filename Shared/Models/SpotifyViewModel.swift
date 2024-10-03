@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-struct Album: Identifiable {
+struct Album: Identifiable, Codable {
     let id: String
     let name: String
     let artists: [Artist]
@@ -11,7 +11,7 @@ struct Album: Identifiable {
     var listenedOn: Date?
     let image: String
     
-    struct Artist {
+    struct Artist: Codable {
         let name: String
     }
     
@@ -33,9 +33,6 @@ class SpotifyViewModel: ObservableObject {
         let description = NSPersistentStoreDescription(url: storeURL)
         persistentContainer = NSPersistentContainer(name: "AlbumModel")
         persistentContainer.persistentStoreDescriptions = [description]
-        
-        // DEBUG: destroy store
-        //try? persistentContainer.persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
         
         persistentContainer.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
@@ -90,15 +87,12 @@ class SpotifyViewModel: ObservableObject {
     }
     
     func fetchAlbumFromURL(_ urlString: String, completion: @escaping (Album?) -> Void) {
-        print("Adding album from URL: \(urlString)")
-        print("URL path components: \(URL(string: urlString)?.pathComponents)")
         guard let url = URL(string: urlString),
               let spotifyId = url.pathComponents.last else {
             print("Invalid Spotify URL")
             completion(nil)
             return
         }
-        print("VALDIDD")
         
         fetchAlbumDetails(spotifyId: spotifyId) { result in
             switch result {
@@ -189,7 +183,6 @@ class SpotifyViewModel: ObservableObject {
                     image: entity.image ?? ""
                 )
             }
-            print(albums)
         } catch {
             print("Error loading albums: \(error)")
         }
@@ -258,7 +251,6 @@ class SpotifyViewModel: ObservableObject {
                     listenedOn: nil,
                     image: spotifyAlbum.images.first?.url ?? ""
                 )
-                print(album)
                 
                 completion(.success(album))
             } catch {
@@ -266,6 +258,69 @@ class SpotifyViewModel: ObservableObject {
             }
         }.resume()
     }
+    
+    func exportAlbums(to url: URL) -> Bool {
+        guard url.startAccessingSecurityScopedResource() else {
+            print("Error: Couldn't access security-scoped resource.")
+            return false
+        }
+        
+        defer {
+            url.stopAccessingSecurityScopedResource()
+        }
+
+        do {
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+            let data = try encoder.encode(albums)
+            try data.write(to: url)
+            return true
+        } catch {
+            print("Error exporting albums: \(error)")
+            return false
+        }
+    }
+
+    
+    func importAlbums(from url: URL) -> Bool {
+        guard url.startAccessingSecurityScopedResource() else {
+            print("Error: Couldn't access security-scoped resource.")
+            return false
+        }
+        
+        defer {
+            url.stopAccessingSecurityScopedResource()
+        }
+
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let importedAlbums = try decoder.decode([Album].self, from: data)
+            
+            // Clear existing albums in Core Data
+            let context = persistentContainer.viewContext
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "AlbumEntity")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            try context.execute(deleteRequest)
+            try context.save()
+            
+            // Save imported albums to Core Data
+            for album in importedAlbums {
+                saveAlbum(album)
+            }
+            
+            // Reload albums
+            loadAlbums()
+            
+            return true
+        } catch {
+            print("Error importing albums: \(error)")
+            return false
+        }
+    }
+
     
 }
 

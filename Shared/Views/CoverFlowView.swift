@@ -5,6 +5,7 @@ struct CoverFlowView: View {
     var namespace: Namespace.ID
     @Binding var selectedAlbum: Album?
     var isListenedView: Bool = false
+    @Binding var isAnimating: Bool
     
     private func filteredAlbums() -> [Album] {
         let filtered = viewModel.albums.filter { album in
@@ -35,7 +36,7 @@ struct CoverFlowView: View {
                                                   namespace: namespace,
                                                   selectedAlbum: $selectedAlbum,
                                                   geometryHeight: geometry.size.height,
-                                                  toggleListened: {
+                                                  isAnimating: $isAnimating, toggleListened: {
                                 if album.listened {
                                     viewModel.markAlbumAsToListen(album)
                                 } else {
@@ -63,6 +64,7 @@ struct AlbumItemRotationView: View {
     var namespace: Namespace.ID
     @Binding var selectedAlbum: Album?
     let geometryHeight: CGFloat
+    @Binding var isAnimating: Bool
     
     var toggleListened: () -> Void
     var remove: () -> Void
@@ -78,8 +80,13 @@ struct AlbumItemRotationView: View {
                           album: album
             )
             .onTapGesture {
-                withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                    selectedAlbum = album
+                if !isAnimating {
+                    isAnimating = true
+                    withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                        selectedAlbum = album
+                    } completion: {
+                        isAnimating = false
+                    }
                 }
             }
             .contextMenu {

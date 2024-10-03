@@ -8,6 +8,7 @@ import SwiftUI
 import SwiftUIIntrospect
 import Combine
 
+
 struct ContentView: View {
     @StateObject private var viewModel = SpotifyViewModel()
     @State private var selectedAlbum: Album?
@@ -16,16 +17,19 @@ struct ContentView: View {
     @State private var spotifyLink = ""
     @State private var lastHostingView: UIView!
     @State private var settingsDetent = PresentationDetent.large
+    @State private var isAnimating = false
     @Namespace private var namespace
+    @State private var isShowingActionSheet = false
+    
     
     var body: some View {
         ZStack {
             NavigationStack {
                 ZStack {
                     TabView(selection: $currentTab) {
-                        CoverFlowView(viewModel: viewModel, namespace: namespace, selectedAlbum: $selectedAlbum)
+                        CoverFlowView(viewModel: viewModel, namespace: namespace, selectedAlbum: $selectedAlbum, isAnimating: $isAnimating)
                             .tag(0)
-                        CoverFlowView(viewModel: viewModel, namespace: namespace, selectedAlbum: $selectedAlbum, isListenedView: true)
+                        CoverFlowView(viewModel: viewModel, namespace: namespace, selectedAlbum: $selectedAlbum, isListenedView: true, isAnimating: $isAnimating)
                             .tag(1)
                     }
                     .ignoresSafeArea()
@@ -53,7 +57,7 @@ struct ContentView: View {
                 
                 guard let hostingView = hosting.view else { return }
                 
-                bar.addSubview(hostingView)      
+                bar.addSubview(hostingView)
                 hostingView.backgroundColor = .clear
                 
                 DispatchQueue.main.async {
@@ -76,127 +80,28 @@ struct ContentView: View {
                             get: { selectedAlbum != nil },
                             set: { if !$0 { selectedAlbum = nil } }
                            ),
-                           album: album
+                           album: album, isAnimating: $isAnimating
                 )
                 .zIndex(1)
             }
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             viewModel.loadAlbums()
         }
+        
+        ImportExportView(isShowingActionSheet: $isShowingActionSheet,
+                                    viewModel: viewModel)
     }
     
     private func selectRandomAlbum() {
-        let albums = currentTab == 0 ? viewModel.albums.filter { !$0.listened } : viewModel.albums.filter { $0.listened }
-        if let randomAlbum = albums.randomElement() {
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                selectedAlbum = randomAlbum
-            }
-        }
-    }
-}
-
-struct AddAlbumView: View {
-    enum FocusedField {
-        case link
-    }
-    
-    @Binding var spotifyLink: String
-    @Namespace private var namespace
-    @FocusState private var focusedField: FocusedField?
-    
-    @State private var album: Album?
-    @ObservedObject var viewModel: SpotifyViewModel
-    
-    @State private var debouncedLink: String = ""
-    private let debounceDelay: TimeInterval = 0.5
-    @State private var cancellable: AnyCancellable?
-    
-    var onAdd: () -> Void
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                AlbumItemView(namespace: namespace, selected: .constant(false), rotation: 0, album: album)
-                    .frame(width: 200, height: 200)
-                
-                Form {
-                    HStack {
-                        TextField("Paste Spotify link here", text: $spotifyLink)
-                            .focused($focusedField, equals: .link)
-                            .keyboardType(.URL)
-                            .textContentType(.URL)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .onChange(of: spotifyLink) { newValue in
-                                debounceSpotifyLink(newValue)
-                            }
-                        
-                        Button(action: {
-                            if let link = UIPasteboard.general.string {
-                                spotifyLink = link
-                            }
-                        }) {
-                            Image(systemName: "doc.on.clipboard")
-                                .foregroundColor(.blue)
-                        }
-                    }
+        if (!isAnimating) {
+            let albums = currentTab == 0 ? viewModel.albums.filter { !$0.listened } : viewModel.albums.filter { $0.listened }
+            if let randomAlbum = albums.randomElement() {
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                    isAnimating = true
+                    selectedAlbum = randomAlbum
+                } completion: {
+                    isAnimating = false
                 }
-                .onAppear {
-                    focusedField = .link
-                }
-                .padding()
-                
-                Button("Add Album") {
-                    onAdd()
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(album == nil)
-            }
-            .navigationTitle("Add New Album")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-    
-    private func debounceSpotifyLink(_ newValue: String) {
-        cancellable?.cancel()
-        
-        cancellable = Just(newValue)
-            .delay(for: .seconds(debounceDelay), scheduler: RunLoop.main)
-            .sink { [weak viewModel] debouncedValue in
-                viewModel?.fetchAlbumFromURL(debouncedValue) { fetchedAlbum in
-                    self.album = fetchedAlbum
-                }
-            }
-    }
-}
-
-
-
-
-struct AddButtonView: View {
-    @Binding var isAddSheetPresented: Bool
-    var onRandom: () -> Void = {}
-    
-    var body: some View {
-        HStack(spacing: 4) {
-            Button {
-                onRandom()
-            } label: {
-                Image(systemName: "dice")
-                    .font(.body.weight(.bold))
-                    .foregroundColor(.white)
-                    .padding(8)
-                    .background(.ultraThinMaterial, in: Circle())
-            }
-            
-            Button {
-                isAddSheetPresented = true
-            } label: {
-                Image(systemName: "plus")
-                    .font(.body.weight(.bold))
-                    .foregroundColor(.white)
-                    .padding(8)
-                    .background(.ultraThinMaterial, in: Circle())
             }
         }
     }
@@ -207,5 +112,17 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .preferredColorScheme(.dark)
+    }
+}
+
+extension UIDevice {
+    static let deviceDidShakeNotification = Notification.Name(rawValue: "deviceDidShakeNotification")
+}
+
+extension UIWindow {
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            NotificationCenter.default.post(name: UIDevice.deviceDidShakeNotification, object: nil)
+        }
     }
 }
