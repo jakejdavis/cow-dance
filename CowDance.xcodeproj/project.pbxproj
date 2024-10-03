@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		040567932CAB3F6D006FAC35 /* PixieCacheKit in Frameworks */ = {isa = PBXBuildFile; productRef = 040567922CAB3F6D006FAC35 /* PixieCacheKit */; };
 		040C92992CAC82340089D5A4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 040C92982CAC82340089D5A4 /* SwiftUIIntrospect */; };
-		040C929B2CAC8CB60089D5A4 /* PixieCacheKit in Frameworks */ = {isa = PBXBuildFile; productRef = 040C929A2CAC8CB60089D5A4 /* PixieCacheKit */; };
-		040C929D2CAC8CB60089D5A4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 040C929C2CAC8CB60089D5A4 /* SwiftUIIntrospect */; };
-		040C92A02CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */; };
 		040C92A12CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */; };
 		040C930F2CAD5E0A0089D5A4 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 040C93052CAD5E0A0089D5A4 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		040C931B2CAD604D0089D5A4 /* AlbumModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */; };
@@ -20,12 +17,8 @@
 		04A7BB0E2CADAD4B00D874F6 /* PixieCacheKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04A7BB0D2CADAD4B00D874F6 /* PixieCacheKit */; };
 		FACC06022871A3150088C2B4 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC06012871A3150088C2B4 /* Tests_iOS.swift */; };
 		FACC06042871A3150088C2B4 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC06032871A3150088C2B4 /* Tests_iOSLaunchTests.swift */; };
-		FACC060E2871A3150088C2B4 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC060D2871A3150088C2B4 /* Tests_macOS.swift */; };
-		FACC06102871A3150088C2B4 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC060F2871A3150088C2B4 /* Tests_macOSLaunchTests.swift */; };
 		FACC06112871A3150088C2B4 /* CowDanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC05E92871A3100088C2B4 /* CowDanceApp.swift */; };
-		FACC06122871A3150088C2B4 /* CowDanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC05E92871A3100088C2B4 /* CowDanceApp.swift */; };
 		FACC06152871A3150088C2B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACC05EB2871A3150088C2B4 /* Assets.xcassets */; };
-		FACC06162871A3150088C2B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACC05EB2871A3150088C2B4 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,13 +35,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = FACC05EF2871A3150088C2B4;
 			remoteInfo = "MatchedGeometryEffect (iOS)";
-		};
-		FACC060A2871A3150088C2B4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FACC05E42871A3100088C2B4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FACC05F52871A3150088C2B4;
-			remoteInfo = "MatchedGeometryEffect (macOS)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -75,14 +61,9 @@
 		FACC05E92871A3100088C2B4 /* CowDanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowDanceApp.swift; sourceTree = "<group>"; };
 		FACC05EB2871A3150088C2B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FACC05F02871A3150088C2B4 /* CowDance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CowDance.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FACC05F62871A3150088C2B4 /* CowDance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CowDance.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FACC05F82871A3150088C2B4 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		FACC05FD2871A3150088C2B4 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACC06012871A3150088C2B4 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		FACC06032871A3150088C2B4 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
-		FACC06092871A3150088C2B4 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FACC060D2871A3150088C2B4 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
-		FACC060F2871A3150088C2B4 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -135,23 +116,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FACC05F32871A3150088C2B4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				040C929B2CAC8CB60089D5A4 /* PixieCacheKit in Frameworks */,
-				040C929D2CAC8CB60089D5A4 /* SwiftUIIntrospect in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FACC05FA2871A3150088C2B4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FACC06062871A3150088C2B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -174,9 +139,7 @@
 				04A7BB042CADA2C800D874F6 /* CowDance (iOS).entitlements */,
 				040C92FC2CAD57E50089D5A4 /* CowDance--iOS--Info.plist */,
 				FACC05E82871A3100088C2B4 /* Shared */,
-				FACC05F72871A3150088C2B4 /* macOS */,
 				FACC06002871A3150088C2B4 /* Tests iOS */,
-				FACC060C2871A3150088C2B4 /* Tests macOS */,
 				040C93062CAD5E0A0089D5A4 /* ShareExtension */,
 				040567912CAB3F6D006FAC35 /* Frameworks */,
 				FACC05F12871A3150088C2B4 /* Products */,
@@ -200,20 +163,10 @@
 			isa = PBXGroup;
 			children = (
 				FACC05F02871A3150088C2B4 /* CowDance.app */,
-				FACC05F62871A3150088C2B4 /* CowDance.app */,
 				FACC05FD2871A3150088C2B4 /* Tests iOS.xctest */,
-				FACC06092871A3150088C2B4 /* Tests macOS.xctest */,
 				040C93052CAD5E0A0089D5A4 /* ShareExtension.appex */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		FACC05F72871A3150088C2B4 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				FACC05F82871A3150088C2B4 /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 		FACC06002871A3150088C2B4 /* Tests iOS */ = {
@@ -223,15 +176,6 @@
 				FACC06032871A3150088C2B4 /* Tests_iOSLaunchTests.swift */,
 			);
 			path = "Tests iOS";
-			sourceTree = "<group>";
-		};
-		FACC060C2871A3150088C2B4 /* Tests macOS */ = {
-			isa = PBXGroup;
-			children = (
-				FACC060D2871A3150088C2B4 /* Tests_macOS.swift */,
-				FACC060F2871A3150088C2B4 /* Tests_macOSLaunchTests.swift */,
-			);
-			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,27 +228,6 @@
 			productReference = FACC05F02871A3150088C2B4 /* CowDance.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FACC05F52871A3150088C2B4 /* CowDance (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FACC061C2871A3150088C2B4 /* Build configuration list for PBXNativeTarget "CowDance (macOS)" */;
-			buildPhases = (
-				FACC05F22871A3150088C2B4 /* Sources */,
-				FACC05F32871A3150088C2B4 /* Frameworks */,
-				FACC05F42871A3150088C2B4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				040C928D2CAC1D5E0089D5A4 /* Models */,
-				040C928E2CAC1D820089D5A4 /* Views */,
-			);
-			name = "CowDance (macOS)";
-			productName = "MatchedGeometryEffect (macOS)";
-			productReference = FACC05F62871A3150088C2B4 /* CowDance.app */;
-			productType = "com.apple.product-type.application";
-		};
 		FACC05FC2871A3150088C2B4 /* Tests iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FACC061F2871A3150088C2B4 /* Build configuration list for PBXNativeTarget "Tests iOS" */;
@@ -323,24 +246,6 @@
 			productReference = FACC05FD2871A3150088C2B4 /* Tests iOS.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		FACC06082871A3150088C2B4 /* Tests macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FACC06222871A3150088C2B4 /* Build configuration list for PBXNativeTarget "Tests macOS" */;
-			buildPhases = (
-				FACC06052871A3150088C2B4 /* Sources */,
-				FACC06062871A3150088C2B4 /* Frameworks */,
-				FACC06072871A3150088C2B4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FACC060B2871A3150088C2B4 /* PBXTargetDependency */,
-			);
-			name = "Tests macOS";
-			productName = "Tests macOS";
-			productReference = FACC06092871A3150088C2B4 /* Tests macOS.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -357,16 +262,9 @@
 					FACC05EF2871A3150088C2B4 = {
 						CreatedOnToolsVersion = 13.3;
 					};
-					FACC05F52871A3150088C2B4 = {
-						CreatedOnToolsVersion = 13.3;
-					};
 					FACC05FC2871A3150088C2B4 = {
 						CreatedOnToolsVersion = 13.3;
 						TestTargetID = FACC05EF2871A3150088C2B4;
-					};
-					FACC06082871A3150088C2B4 = {
-						CreatedOnToolsVersion = 13.3;
-						TestTargetID = FACC05F52871A3150088C2B4;
 					};
 				};
 			};
@@ -389,9 +287,7 @@
 			projectRoot = "";
 			targets = (
 				FACC05EF2871A3150088C2B4 /* CowDance (iOS) */,
-				FACC05F52871A3150088C2B4 /* CowDance (macOS) */,
 				FACC05FC2871A3150088C2B4 /* Tests iOS */,
-				FACC06082871A3150088C2B4 /* Tests macOS */,
 				040C93042CAD5E0A0089D5A4 /* ShareExtension */,
 			);
 		};
@@ -413,22 +309,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FACC05F42871A3150088C2B4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FACC06162871A3150088C2B4 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FACC05FB2871A3150088C2B4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FACC06072871A3150088C2B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -455,30 +336,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FACC05F22871A3150088C2B4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				040C92A02CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */,
-				FACC06122871A3150088C2B4 /* CowDanceApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FACC05F92871A3150088C2B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FACC06042871A3150088C2B4 /* Tests_iOSLaunchTests.swift in Sources */,
 				FACC06022871A3150088C2B4 /* Tests_iOS.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FACC06052871A3150088C2B4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FACC06102871A3150088C2B4 /* Tests_macOSLaunchTests.swift in Sources */,
-				FACC060E2871A3150088C2B4 /* Tests_macOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,11 +357,6 @@
 			isa = PBXTargetDependency;
 			target = FACC05EF2871A3150088C2B4 /* CowDance (iOS) */;
 			targetProxy = FACC05FE2871A3150088C2B4 /* PBXContainerItemProxy */;
-		};
-		FACC060B2871A3150088C2B4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FACC05F52871A3150088C2B4 /* CowDance (macOS) */;
-			targetProxy = FACC060A2871A3150088C2B4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -759,64 +617,6 @@
 			};
 			name = Release;
 		};
-		FACC061D2871A3150088C2B4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = ZDPLUTEA7D;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.muratozturk.MatchedGeometryEffect;
-				PRODUCT_NAME = CowDance;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		FACC061E2871A3150088C2B4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = ZDPLUTEA7D;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.muratozturk.MatchedGeometryEffect;
-				PRODUCT_NAME = CowDance;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		FACC06202871A3150088C2B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -856,44 +656,6 @@
 			};
 			name = Release;
 		};
-		FACC06232871A3150088C2B4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 99G5W9P68N;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.muratozturk.Tests-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "MatchedGeometryEffect (macOS)";
-			};
-			name = Debug;
-		};
-		FACC06242871A3150088C2B4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 99G5W9P68N;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.muratozturk.Tests-macOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = "MatchedGeometryEffect (macOS)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -924,29 +686,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FACC061C2871A3150088C2B4 /* Build configuration list for PBXNativeTarget "CowDance (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FACC061D2871A3150088C2B4 /* Debug */,
-				FACC061E2871A3150088C2B4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		FACC061F2871A3150088C2B4 /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FACC06202871A3150088C2B4 /* Debug */,
 				FACC06212871A3150088C2B4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FACC06222871A3150088C2B4 /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FACC06232871A3150088C2B4 /* Debug */,
-				FACC06242871A3150088C2B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -987,16 +731,6 @@
 			productName = PixieCacheKit;
 		};
 		040C92982CAC82340089D5A4 /* SwiftUIIntrospect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 040C92972CAC82340089D5A4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
-			productName = SwiftUIIntrospect;
-		};
-		040C929A2CAC8CB60089D5A4 /* PixieCacheKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 040567902CAB3DE1006FAC35 /* XCRemoteSwiftPackageReference "PixieCacheKit" */;
-			productName = PixieCacheKit;
-		};
-		040C929C2CAC8CB60089D5A4 /* SwiftUIIntrospect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 040C92972CAC82340089D5A4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
 			productName = SwiftUIIntrospect;
