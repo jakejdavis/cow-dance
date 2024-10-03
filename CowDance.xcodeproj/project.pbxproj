@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		040567932CAB3F6D006FAC35 /* PixieCacheKit in Frameworks */ = {isa = PBXBuildFile; productRef = 040567922CAB3F6D006FAC35 /* PixieCacheKit */; };
-		040567A52CAB5374006FAC35 /* share.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0405679B2CAB5374006FAC35 /* share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		040C92992CAC82340089D5A4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 040C92982CAC82340089D5A4 /* SwiftUIIntrospect */; };
 		040C929B2CAC8CB60089D5A4 /* PixieCacheKit in Frameworks */ = {isa = PBXBuildFile; productRef = 040C929A2CAC8CB60089D5A4 /* PixieCacheKit */; };
 		040C929D2CAC8CB60089D5A4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = 040C929C2CAC8CB60089D5A4 /* SwiftUIIntrospect */; };
 		040C92A02CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */; };
 		040C92A12CACCAA90089D5A4 /* AlbumModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */; };
+		040C930F2CAD5E0A0089D5A4 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 040C93052CAD5E0A0089D5A4 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		040C931B2CAD604D0089D5A4 /* AlbumModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */; };
+		04A7BB082CADA73C00D874F6 /* SkeletonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 04A7BB072CADA73C00D874F6 /* SkeletonUI */; };
+		04A7BB0A2CADA74900D874F6 /* SkeletonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 04A7BB092CADA74900D874F6 /* SkeletonUI */; };
+		04A7BB0E2CADAD4B00D874F6 /* PixieCacheKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04A7BB0D2CADAD4B00D874F6 /* PixieCacheKit */; };
 		FACC06022871A3150088C2B4 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC06012871A3150088C2B4 /* Tests_iOS.swift */; };
 		FACC06042871A3150088C2B4 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC06032871A3150088C2B4 /* Tests_iOSLaunchTests.swift */; };
 		FACC060E2871A3150088C2B4 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC060D2871A3150088C2B4 /* Tests_macOS.swift */; };
@@ -25,12 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		040567A32CAB5374006FAC35 /* PBXContainerItemProxy */ = {
+		040C930D2CAD5E0A0089D5A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FACC05E42871A3100088C2B4 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0405679A2CAB5374006FAC35;
-			remoteInfo = share;
+			remoteGlobalIDString = 040C93042CAD5E0A0089D5A4;
+			remoteInfo = ShareExtension;
 		};
 		FACC05FE2871A3150088C2B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -55,7 +59,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				040567A52CAB5374006FAC35 /* share.appex in Embed Foundation Extensions */,
+				040C930F2CAD5E0A0089D5A4 /* ShareExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,8 +67,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0405679B2CAB5374006FAC35 /* share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		040C929F2CACCAA90089D5A4 /* AlbumModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlbumModel.xcdatamodel; sourceTree = "<group>"; };
+		040C92F62CAD52DF0089D5A4 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		040C92FC2CAD57E50089D5A4 /* CowDance--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CowDance--iOS--Info.plist"; sourceTree = "<group>"; };
+		040C93052CAD5E0A0089D5A4 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		04A7BB042CADA2C800D874F6 /* CowDance (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CowDance (iOS).entitlements"; sourceTree = "<group>"; };
 		FACC05E92871A3100088C2B4 /* CowDanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CowDanceApp.swift; sourceTree = "<group>"; };
 		FACC05EB2871A3150088C2B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FACC05F02871A3150088C2B4 /* CowDance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CowDance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,26 +86,42 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		040567A62CAB5374006FAC35 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		040C93102CAD5E0A0089D5A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 0405679A2CAB5374006FAC35 /* share */;
+			target = 040C93042CAD5E0A0089D5A4 /* ShareExtension */;
+		};
+		040C931A2CAD5F360089D5A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SpotifyViewModel.swift,
+			);
+			target = 040C93042CAD5E0A0089D5A4 /* ShareExtension */;
+		};
+		04A7BB0C2CADAB7000D874F6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AlbumItemView.swift,
+			);
+			target = 040C93042CAD5E0A0089D5A4 /* ShareExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0405679C2CAB5374006FAC35 /* share */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (040567A62CAB5374006FAC35 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = share; sourceTree = "<group>"; };
-		040C928D2CAC1D5E0089D5A4 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
-		040C928E2CAC1D820089D5A4 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		040C928D2CAC1D5E0089D5A4 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (040C931A2CAD5F360089D5A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
+		040C928E2CAC1D820089D5A4 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (04A7BB0C2CADAB7000D874F6 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+		040C93062CAD5E0A0089D5A4 /* ShareExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (040C93102CAD5E0A0089D5A4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = ShareExtension; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		040567982CAB5374006FAC35 /* Frameworks */ = {
+		040C93022CAD5E0A0089D5A4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A7BB0E2CADAD4B00D874F6 /* PixieCacheKit in Frameworks */,
+				04A7BB0A2CADA74900D874F6 /* SkeletonUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040567932CAB3F6D006FAC35 /* PixieCacheKit in Frameworks */,
+				04A7BB082CADA73C00D874F6 /* SkeletonUI in Frameworks */,
 				040C92992CAC82340089D5A4 /* SwiftUIIntrospect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,11 +171,13 @@
 		FACC05E32871A3100088C2B4 = {
 			isa = PBXGroup;
 			children = (
+				04A7BB042CADA2C800D874F6 /* CowDance (iOS).entitlements */,
+				040C92FC2CAD57E50089D5A4 /* CowDance--iOS--Info.plist */,
 				FACC05E82871A3100088C2B4 /* Shared */,
 				FACC05F72871A3150088C2B4 /* macOS */,
 				FACC06002871A3150088C2B4 /* Tests iOS */,
 				FACC060C2871A3150088C2B4 /* Tests macOS */,
-				0405679C2CAB5374006FAC35 /* share */,
+				040C93062CAD5E0A0089D5A4 /* ShareExtension */,
 				040567912CAB3F6D006FAC35 /* Frameworks */,
 				FACC05F12871A3150088C2B4 /* Products */,
 			);
@@ -165,6 +191,7 @@
 				FACC05E92871A3100088C2B4 /* CowDanceApp.swift */,
 				040C929E2CACCAA90089D5A4 /* AlbumModel.xcdatamodeld */,
 				FACC05EB2871A3150088C2B4 /* Assets.xcassets */,
+				040C92F62CAD52DF0089D5A4 /* Config.xcconfig */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -176,7 +203,7 @@
 				FACC05F62871A3150088C2B4 /* CowDance.app */,
 				FACC05FD2871A3150088C2B4 /* Tests iOS.xctest */,
 				FACC06092871A3150088C2B4 /* Tests macOS.xctest */,
-				0405679B2CAB5374006FAC35 /* share.appex */,
+				040C93052CAD5E0A0089D5A4 /* ShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,26 +237,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0405679A2CAB5374006FAC35 /* share */ = {
+		040C93042CAD5E0A0089D5A4 /* ShareExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 040567A72CAB5374006FAC35 /* Build configuration list for PBXNativeTarget "share" */;
+			buildConfigurationList = 040C93112CAD5E0A0089D5A4 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
 			buildPhases = (
-				040567972CAB5374006FAC35 /* Sources */,
-				040567982CAB5374006FAC35 /* Frameworks */,
-				040567992CAB5374006FAC35 /* Resources */,
+				040C93012CAD5E0A0089D5A4 /* Sources */,
+				040C93022CAD5E0A0089D5A4 /* Frameworks */,
+				040C93032CAD5E0A0089D5A4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				0405679C2CAB5374006FAC35 /* share */,
+				040C93062CAD5E0A0089D5A4 /* ShareExtension */,
 			);
-			name = share;
+			name = ShareExtension;
 			packageProductDependencies = (
+				04A7BB092CADA74900D874F6 /* SkeletonUI */,
+				04A7BB0D2CADAD4B00D874F6 /* PixieCacheKit */,
 			);
-			productName = share;
-			productReference = 0405679B2CAB5374006FAC35 /* share.appex */;
+			productName = ShareExtension;
+			productReference = 040C93052CAD5E0A0089D5A4 /* ShareExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		FACC05EF2871A3150088C2B4 /* CowDance (iOS) */ = {
@@ -244,7 +273,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				040567A42CAB5374006FAC35 /* PBXTargetDependency */,
+				040C930E2CAD5E0A0089D5A4 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				040C928D2CAC1D5E0089D5A4 /* Models */,
@@ -320,9 +349,9 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					0405679A2CAB5374006FAC35 = {
+					040C93042CAD5E0A0089D5A4 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 					FACC05EF2871A3150088C2B4 = {
@@ -353,6 +382,7 @@
 			packageReferences = (
 				040567902CAB3DE1006FAC35 /* XCRemoteSwiftPackageReference "PixieCacheKit" */,
 				040C92972CAC82340089D5A4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
+				04A7BB062CADA73C00D874F6 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
 			);
 			productRefGroup = FACC05F12871A3150088C2B4 /* Products */;
 			projectDirPath = "";
@@ -362,13 +392,13 @@
 				FACC05F52871A3150088C2B4 /* CowDance (macOS) */,
 				FACC05FC2871A3150088C2B4 /* Tests iOS */,
 				FACC06082871A3150088C2B4 /* Tests macOS */,
-				0405679A2CAB5374006FAC35 /* share */,
+				040C93042CAD5E0A0089D5A4 /* ShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		040567992CAB5374006FAC35 /* Resources */ = {
+		040C93032CAD5E0A0089D5A4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -408,10 +438,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		040567972CAB5374006FAC35 /* Sources */ = {
+		040C93012CAD5E0A0089D5A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040C931B2CAD604D0089D5A4 /* AlbumModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,10 +485,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		040567A42CAB5374006FAC35 /* PBXTargetDependency */ = {
+		040C930E2CAD5E0A0089D5A4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0405679A2CAB5374006FAC35 /* share */;
-			targetProxy = 040567A32CAB5374006FAC35 /* PBXContainerItemProxy */;
+			target = 040C93042CAD5E0A0089D5A4 /* ShareExtension */;
+			targetProxy = 040C930D2CAD5E0A0089D5A4 /* PBXContainerItemProxy */;
 		};
 		FACC05FF2871A3150088C2B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -472,19 +503,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		040567A82CAB5374006FAC35 /* Debug */ = {
+		040C93122CAD5E0A0089D5A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZDPLUTEA7D;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = share/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = share;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -494,7 +526,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dance.cow.tracker.share;
+				PRODUCT_BUNDLE_IDENTIFIER = dance.cow.tracker.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -505,19 +537,20 @@
 			};
 			name = Debug;
 		};
-		040567A92CAB5374006FAC35 /* Release */ = {
+		040C93132CAD5E0A0089D5A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZDPLUTEA7D;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = share/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = share;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -527,7 +560,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dance.cow.tracker.share;
+				PRODUCT_BUNDLE_IDENTIFIER = dance.cow.tracker.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -540,6 +573,7 @@
 		};
 		FACC06172871A3150088C2B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 040C92F62CAD52DF0089D5A4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -571,6 +605,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -588,6 +623,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_PREPROCESS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -598,6 +634,7 @@
 		};
 		FACC06182871A3150088C2B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 040C92F62CAD52DF0089D5A4 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -629,6 +666,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -640,6 +678,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_PREPROCESS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -652,11 +691,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "CowDance (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZDPLUTEA7D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CowDance--iOS--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = cow.dance;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -684,11 +725,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "CowDance (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZDPLUTEA7D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CowDance--iOS--Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = cow.dance;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -721,6 +764,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = ZDPLUTEA7D;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -749,6 +793,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = ZDPLUTEA7D;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -771,7 +816,6 @@
 		FACC06202871A3150088C2B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 99G5W9P68N;
@@ -791,7 +835,6 @@
 		FACC06212871A3150088C2B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 99G5W9P68N;
@@ -812,9 +855,9 @@
 		FACC06232871A3150088C2B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 99G5W9P68N;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
@@ -831,9 +874,9 @@
 		FACC06242871A3150088C2B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 99G5W9P68N;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.2;
@@ -850,11 +893,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		040567A72CAB5374006FAC35 /* Build configuration list for PBXNativeTarget "share" */ = {
+		040C93112CAD5E0A0089D5A4 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				040567A82CAB5374006FAC35 /* Debug */,
-				040567A92CAB5374006FAC35 /* Release */,
+				040C93122CAD5E0A0089D5A4 /* Debug */,
+				040C93132CAD5E0A0089D5A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -923,6 +966,14 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		04A7BB062CADA73C00D874F6 /* XCRemoteSwiftPackageReference "SkeletonUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CSolanaM/SkeletonUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -945,6 +996,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 040C92972CAC82340089D5A4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
 			productName = SwiftUIIntrospect;
+		};
+		04A7BB072CADA73C00D874F6 /* SkeletonUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04A7BB062CADA73C00D874F6 /* XCRemoteSwiftPackageReference "SkeletonUI" */;
+			productName = SkeletonUI;
+		};
+		04A7BB092CADA74900D874F6 /* SkeletonUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04A7BB062CADA73C00D874F6 /* XCRemoteSwiftPackageReference "SkeletonUI" */;
+			productName = SkeletonUI;
+		};
+		04A7BB0D2CADAD4B00D874F6 /* PixieCacheKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040567902CAB3DE1006FAC35 /* XCRemoteSwiftPackageReference "PixieCacheKit" */;
+			productName = PixieCacheKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

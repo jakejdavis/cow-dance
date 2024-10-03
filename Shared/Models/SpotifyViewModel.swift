@@ -7,33 +7,48 @@ struct Album: Identifiable {
     let artists: [Artist]
     let spotifyId: String
     var listened: Bool
+    var addedOn: Date = Date()
+    var listenedOn: Date?
     let image: String
     
     struct Artist {
         let name: String
     }
-
+    
 }
 
 class SpotifyViewModel: ObservableObject {
     @Published var albums: [Album] = []
-    private let clientId = "5bc79824bb26473891c5b93262e8439f"
-    private let clientSecret = "e2e58ebc7edd494fb4540307570e7fc7"
+    private let clientId = Bundle.main.object(forInfoDictionaryKey: "SPOTIFY_CLIENT_ID") as? String ?? ""
+    private let clientSecret = Bundle.main.object(forInfoDictionaryKey: "SPOTIFY_CLIENT_SECRET") as? String ?? ""
+    
     private var accessToken: String?
     
     private let persistentContainer: NSPersistentContainer
     
-    init() {
+    init(preloadData: Bool = true, completion: (() -> Void)? = nil) {
+        let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.dance.cow.tracker.shared")!
+        let storeURL = groupURL.appendingPathComponent("AlbumModel.sqlite")
+        
+        let description = NSPersistentStoreDescription(url: storeURL)
         persistentContainer = NSPersistentContainer(name: "AlbumModel")
+        persistentContainer.persistentStoreDescriptions = [description]
+        
+        // DEBUG: destroy store
+        //try? persistentContainer.persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
+        
         persistentContainer.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         }
         
-        loadAlbums()
-        fetchAccessToken()
+        if preloadData {
+            loadAlbums()
+            fetchAccessToken(completion: completion)
+        }
     }
+    
     
     func removeAlbum(_ album: Album) {
         let context = persistentContainer.viewContext
@@ -53,8 +68,10 @@ class SpotifyViewModel: ObservableObject {
     }
     
     func addAlbumFromURL(_ urlString: String) {
+        
         guard let url = URL(string: urlString),
-              let spotifyId = url.pathComponents.last else {
+              
+                let spotifyId = url.pathComponents.last else {
             print("Invalid Spotify URL")
             return
         }
@@ -72,6 +89,30 @@ class SpotifyViewModel: ObservableObject {
         }
     }
     
+    func fetchAlbumFromURL(_ urlString: String, completion: @escaping (Album?) -> Void) {
+        print("Adding album from URL: \(urlString)")
+        print("URL path components: \(URL(string: urlString)?.pathComponents)")
+        guard let url = URL(string: urlString),
+              let spotifyId = url.pathComponents.last else {
+            print("Invalid Spotify URL")
+            completion(nil)
+            return
+        }
+        print("VALDIDD")
+        
+        fetchAlbumDetails(spotifyId: spotifyId) { result in
+            switch result {
+            case .success(let album):
+                completion(album)
+            case .failure(let error):
+                print("Error fetching album details: \(error)")
+                completion(nil)
+            }
+        }
+    }
+    
+    
+    
     func markAlbumAsListened(_ album: Album) {
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<AlbumEntity>(entityName: "AlbumEntity")
@@ -81,6 +122,7 @@ class SpotifyViewModel: ObservableObject {
             let results = try context.fetch(fetchRequest)
             if let albumEntity = results.first {
                 albumEntity.listened = true
+                albumEntity.listenedOn = Date()
                 try context.save()
                 loadAlbums()
             }
@@ -129,13 +171,12 @@ class SpotifyViewModel: ObservableObject {
         }
     }
     
-    private func loadAlbums() {
+    func loadAlbums() {
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<AlbumEntity>(entityName: "AlbumEntity")
         
         do {
             let albumEntities = try context.fetch(fetchRequest)
-            print(albumEntities.map { entity in entity.image})
             albums = albumEntities.map { entity in
                 Album(
                     id: entity.id ?? "",
@@ -143,22 +184,25 @@ class SpotifyViewModel: ObservableObject {
                     artists: (entity.artists?.allObjects as? [ArtistEntity])?.map { Album.Artist(name: $0.name ?? "") } ?? [],
                     spotifyId: entity.spotifyId ?? "",
                     listened: entity.listened,
+                    addedOn: entity.addedOn ?? Date(),
+                    listenedOn: entity.listenedOn,
                     image: entity.image ?? ""
                 )
             }
+            print(albums)
         } catch {
             print("Error loading albums: \(error)")
         }
     }
     
-    private func fetchAccessToken() {
+    func fetchAccessToken(completion: (() -> Void)? = nil) {
         guard let url = URL(string: "https://accounts.spotify.com/api/token") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
-        let authString = "\(clientId):\(clientSecret)".data(using: .utf8)?.base64EncodedString() ?? ""
+        let authString = "\(String(describing: clientId)):\(String(describing: clientSecret))".data(using: .utf8)?.base64EncodedString() ?? ""
         request.setValue("Basic \(authString)", forHTTPHeaderField: "Authorization")
         
         let body = "grant_type=client_credentials"
@@ -170,6 +214,7 @@ class SpotifyViewModel: ObservableObject {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let token = json["access_token"] as? String {
                         self.accessToken = token
+                        completion?()
                     }
                 } catch {
                     print("Error parsing access token: \(error)")
@@ -202,9 +247,6 @@ class SpotifyViewModel: ObservableObject {
             do {
                 let decoder = JSONDecoder()
                 let spotifyAlbum = try decoder.decode(SpotifyAlbum.self, from: data)
-                print(spotifyAlbum.images)
-                print(spotifyAlbum.images.first)
-                print(spotifyAlbum.images.first?.url ?? "")
                 
                 let album = Album(
                     id: UUID().uuidString,
@@ -212,8 +254,11 @@ class SpotifyViewModel: ObservableObject {
                     artists: spotifyAlbum.artists.map { Album.Artist(name: $0.name) },
                     spotifyId: spotifyAlbum.id,
                     listened: false,
+                    addedOn: Date(),
+                    listenedOn: nil,
                     image: spotifyAlbum.images.first?.url ?? ""
                 )
+                print(album)
                 
                 completion(.success(album))
             } catch {
@@ -221,6 +266,7 @@ class SpotifyViewModel: ObservableObject {
             }
         }.resume()
     }
+    
 }
 
 struct SpotifyAlbum: Codable {

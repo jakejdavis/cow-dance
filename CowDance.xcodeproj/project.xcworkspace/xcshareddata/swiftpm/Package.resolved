@@ -1,5 +1,5 @@
 {
-  "originHash" : "720e45c0e30ed397fa69a7c378cc123461ccebe78346886f80475c4df9b816c8",
+  "originHash" : "42031b80f7b1aac7fdb040f550678cc5a90bfcf8c1dbcb1bf1f1183a9104a2ad",
   "pins" : [
     {
       "identity" : "pixiecachekit",
@@ -8,6 +8,33 @@
       "state" : {
         "revision" : "76a6d00b2bf3debb5f6c27789c2e9a685fcc4216",
         "version" : "1.2.1"
+      }
+    },
+    {
+      "identity" : "skeletonui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CSolanaM/SkeletonUI.git",
+      "state" : {
+        "revision" : "f025e9ba5d051374d7344efa8859df5b9399a181",
+        "version" : "2.0.2"
+      }
+    },
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "state" : {
+        "revision" : "7b0bbbae90c41f848f90ac7b4df6c4f50068256d",
+        "version" : "1.17.5"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
       }
     },
     {

@@ -6,6 +6,22 @@ struct CoverFlowView: View {
     @Binding var selectedAlbum: Album?
     var isListenedView: Bool = false
     
+    private func filteredAlbums() -> [Album] {
+        let filtered = viewModel.albums.filter { album in
+            isListenedView ? album.listened : !album.listened
+        }
+        
+        // Sort by addedOn ascending and listenedOn descending for listened albums
+        return filtered.sorted { a, b in
+            if isListenedView {
+                if let aListenedOn = a.listenedOn, let bListenedOn = b.listenedOn {
+                    return aListenedOn > bListenedOn // Descending order for listenedOn
+                }
+            }
+            return a.addedOn < b.addedOn // Ascending order for addedOn
+        }
+    }
+    
     var body: some View {
         ZStack {
             GeometryReader { geometry in
@@ -14,20 +30,17 @@ struct CoverFlowView: View {
                         Spacer()
                             .frame(height: 40)
                         
-                        ForEach(viewModel.albums.filter { album in
-                            isListenedView ? album.listened : !album.listened
-                        }) { album in
-                            
+                        ForEach(filteredAlbums()) { album in
                             AlbumItemRotationView(album: album,
                                                   namespace: namespace,
                                                   selectedAlbum: $selectedAlbum,
                                                   geometryHeight: geometry.size.height,
                                                   toggleListened: {
-                                                    if album.listened {
-                                                        viewModel.markAlbumAsToListen(album)
-                                                    } else {
-                                                        viewModel.markAlbumAsListened(album)
-                                                    }
+                                if album.listened {
+                                    viewModel.markAlbumAsToListen(album)
+                                } else {
+                                    viewModel.markAlbumAsListened(album)
+                                }
                             },
                                                   remove: {
                                 viewModel.removeAlbum(album)
@@ -53,19 +66,16 @@ struct AlbumItemRotationView: View {
     
     var toggleListened: () -> Void
     var remove: () -> Void
-
+    
     var body: some View {
         GeometryReader { geo in
             AlbumItemView(namespace: namespace,
-                          albumId: album.id,
-                          show: Binding(
+                          selected: Binding(
                             get: { selectedAlbum?.id == album.id },
                             set: { _ in }
                           ),
-                          albumTitle: album.name,
-                          artist: album.artists.first?.name ?? "",
-                          albumArtURL: album.image,
-                          rotation: Double(geo.frame(in: .global).minY - geometryHeight / 2 + 150) / 24
+                          rotation: Double(geo.frame(in: .global).minY - geometryHeight / 2 + 150) / 24,
+                          album: album
             )
             .onTapGesture {
                 withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
@@ -73,22 +83,22 @@ struct AlbumItemRotationView: View {
                 }
             }
             .contextMenu {
-                   Button {
-                       toggleListened()
-                   } label: {
-                       if album.listened {
-                           Label("Mark as To Listen", systemImage: "arrow.uturn.backward.circle")
-                       } else {
-                           Label("Mark Listened", systemImage: "checkmark.circle.fill")
-                       }
-                   }
-
-                   Button {
-                       remove()
-                   } label: {
-                       Label("Remove", systemImage: "trash")
-                   }
-               }
+                Button {
+                    toggleListened()
+                } label: {
+                    if album.listened {
+                        Label("Mark as To Listen", systemImage: "arrow.uturn.backward.circle")
+                    } else {
+                        Label("Mark Listened", systemImage: "checkmark.circle.fill")
+                    }
+                }
+                
+                Button {
+                    remove()
+                } label: {
+                    Label("Remove", systemImage: "trash")
+                }
+            }
         }
     }
 }
