@@ -7,7 +7,7 @@ A SwiftUI app for bookmarking albums you want to listen to later. Simply paste a
 
 ## Demo
 
-[![cow.dance demo](./Demo/demo.webp)](./Demo/demo.mp4)
+[![cow.dance demo](./Demo/demo.gif)](./Demo/demo.mp4)
 
 
 ## Development
