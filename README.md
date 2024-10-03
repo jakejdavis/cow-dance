@@ -3,11 +3,12 @@
 
 # cow.dance
 
-A SwiftUI app for bookmarking albums you want to listen to later. Simply paste a Spotify link or share directly from the Spotify app to quickly add it to your personalized list.
+A SwiftUI app for bookmarking albums you want to listen to later. Simply paste a Spotify link or share directly from the Spotify app to quickly add it to your list.
 
 ## Demo
 
-![cow.dance demo](./Demo/demo.webp)
+[![cow.dance demo](./Demo/demo.webp)](./Demo/demo.mp4)
+
 
 ## Development
 
@@ -18,6 +19,6 @@ SPOTIFY_CLIENT_ID = YOUR_CLIENT_ID
 SPOTIFY_CLIENT_SECRET = YOUR_CLIENT_SECRET
 ```
 
-# License
+## License
 
 [MIT license](./LICENSE)
